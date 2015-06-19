@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Autocomplete Test Page</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="autocomplete.js"></script>
+</head>
+<body>
+	<h1>Test Autocomplete Here</h1>
+	<input id="listDropDown" class="form-control" type="text" placeholder="Type text to select" />
+	<input type="button" value="Show Value" id="showValue">
+	<br>
+	<br>
+	<br>
+	<div class="valueZone"></div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var arr = [
+					{
+						id: '1',
+						name: 'Icecream'	
+					},
+					{
+						id: '2',
+						name: 'Chocolate'	
+					},
+					{
+						id: '3',
+						name: 'Biscuit'	
+					},
+					{
+						id: '4',
+						name: 'Frooti'	
+					},
+					{
+						id: '5',
+						name: 'Juice'	
+					},
+			]
+			$('#listDropDown').autocomplete({
+		        data: arr
+		    });
+
+		    $('#showValue').on('click',function(){
+		    	var itemValue = $("#listDropDown").attr('name');
+		    	var itemName = $("#listDropDown").val();
+		    	if(itemName && itemValue)
+		    		$('.valueZone').html('The value of <b>'+itemName+'</b> is <b>'+itemValue+'</b>');
+		    });
+		});
+	</script>
+</body>
+</html>
